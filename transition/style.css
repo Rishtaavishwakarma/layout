@@ -85,3 +85,11 @@
         background-color: orangered;
      }
 }
+.follower{
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    background: #003cff;
+    box-shadow: 5px 5px 20px rgb(73, 73, 73);
+    transition: transform .2s linear;
+}
