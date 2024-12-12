@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animations and transitions</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        /* Default css */
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  width: 100%;
+}
+.nowrap {
+  /* white-space: nowrap; */
+  color: white;
+}
+
+img {
+  display: block;
+}
+
+h2 {
+  width: 100%;
+  text-align: center;
+  font-size: min(4rem, 10vw);
+  margin: 1rem auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  background-image: linear-gradient(
+    90deg,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
+  color: transparent;
+  background-size: 300%, 80px;
+  background-position: 0% 0%;
+  transition: all 0.4s ease-in-out;
+}
+
+/* CSS for image hover effect */
+
+#image_hover {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h2:hover {
+  background-position: 100% 100%;
+}
+
+.container {
+  width: min(900px, 80%);
+  margin: 0, auto;
+  border: 1px solid black;
+  height: 80%;
+  position: relative;
+}
+
+.clip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.clip1 {
+  background-image: url("https://images.unsplash.com/photo-1604537466158-719b1972feb8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80");
+  background-size: cover;
+  background-position: center;
+  transition: all 0.3s ease-in-out;
+  clip-path: polygon(0 0, 20% 0, 40% 100%, 0 100%);
+  transition: all 0.5s ease-in-out;
+}
+.clip2 {
+  background-image: url("https://images.unsplash.com/photo-1502228213426-d4e9f2add0e5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80");
+  background-size: cover;
+  background-position: center;
+  transition: all 0.3s ease-in-out;
+  clip-path: polygon(20% 0, 80% 0, 65% 100%, 35% 100%);
+  transition: all 0.5s ease-in-out;
+}
+.clip3 {
+  background-image: url("https://images.unsplash.com/photo-1519757043093-285fcb07a4e4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1074&q=80");
+  background-position: center;
+  transition: all 0.3s ease-in-out;
+  background-size: cover;
+  clip-path: polygon(80% 0, 100% 0, 100% 100%, 65% 100%);
+  transition: all 0.5s ease-in-out;
+}
+
+/* giving transition to the clips */
+
+.container:hover .clip {
+  clip-path: polygon(100% 0, 100% 0, 100% 100%, 100% 100%);
+}
+
+.container .clip:hover {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+/* CSS for cards */
+
+#cards {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.first_card {
+  height: 500px;
+
+  width: 500px;
+  margin: 8rem auto;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  align-items: center;
+  padding: 1rem;
+  z-index: 10;
+}
+
+.first_card_insider {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-color: white;
+  box-shadow: 0px 0px 5px black;
+  z-index: 4;
+  position: relative;
+}
+
+.first_card_insider_lvl2 {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  transition: all 1s ease-in-out;
+  z-index: 3;
+}
+.first_card_insider h3 {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  z-index: -1;
+  font-size: 2.5rem;
+}
+
+.first_card_insider img {
+  width: 100%;
+  transition: all 1s ease-in-out;
+}
+
+.first_card:hover .first_card_insider img {
+  transform: translateY(-4rem);
+}
+.first_card_insider_lvl2:hover {
+  transform: translateY(-4rem);
+}
+
+.empty1 {
+  position: absolute;
+
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  height: 100%;
+  z-index: -4;
+  background-color: white;
+  box-shadow: 0px 0px 5px black;
+
+  transition: all 1s ease-in-out;
+}
+
+.empty2 {
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+
+  box-shadow: 0px 0px 5px black;
+  background-color: white;
+  z-index: -5;
+  transition: all 1s ease-in-out;
+}
+
+.first_card:hover .empty1 {
+  transform: rotate(25deg);
+}
+.first_card:hover .empty2 {
+  transform: rotate(10deg);
+}
+
+/* Loader */
+
+#loader {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.loader_elements {
+  display: flex;
+  gap: 1px;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+}
+
+.sphere {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: aqua;
+}
+
+.sphere1 {
+  animation: scaler 0.8s ease infinite 0.3s;
+}
+.sphere2 {
+  animation: scaler 0.8s ease infinite 0.4s;
+}
+.sphere3 {
+  animation: scaler 0.8s ease infinite 0.5s;
+}
+.sphere4 {
+  animation: scaler 0.8s ease infinite 0.6s;
+}
+.sphere5 {
+  animation: scaler 0.8s ease infinite 0.7s;
+}
+
+@keyframes scaler {
+  0% {
+    transform: scale(0.8);
+  }
+  50% {
+    transform: scale(1);
+  }
+  100% {
+    transition: scale(0.8);
+  }
+}
+
+/* CSS for image effect sections :we are going to create the 3 images with three effects*/
+#image_effect {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.effect1 {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.image_effect1_content {
+  position: relative;
+  height: 500px;
+  width: 600px;
+  /* padding: 1rem; */
+  overflow: hidden;
+}
+
+.image_effect1_content picture {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 1s ease-in-out;
+}
+.image_effect1_content picture img {
+  width: 100%;
+  height: 100%;
+}
+
+.image_effect1_content p {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  color: white;
+  font-size: min(3rem, 10vw);
+  top: 0;
+  left: -100%;
+  transition: all 1s ease-in-out;
+}
+
+.image_effect1_content:hover p {
+  left: 0;
+}
+.image_effect1_content:hover picture {
+  left: 100%;
+}
+
+.effect2 {
+  height: 100vh;
+  width: 100%;
+}
+
+.image_effect2_content {
+  width: 25%;
+  margin: auto;
+  height: 60%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  /* border: 2px solid black; */
+  overflow: hidden;
+}
+
+.image_effect2_content picture {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.image_effect2_content picture img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.image_effect2_content div {
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(
+    135deg,
+    rgb(110, 3, 110),
+    rgba(169, 169, 169, 0.6),
+    rgb(2, 183, 255)
+  );
+  gap: 1.5rem;
+  flex-direction: column;
+  position: absolute;
+  bottom: -92%;
+
+  left: 0;
+  width: 80%;
+  margin: auto;
+  height: 100%;
+  position: relative;
+  z-index: 10;
+  transition: all 0.5s ease-in-out;
+}
+
+.image_effect2_content .content1 p {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 100;
+  width: 90%;
+  gap: 0.3rem;
+  font-size: 0.9rem;
+  letter-spacing: -0.1rem;
+  font-style: normal;
+  color: red;
+  display: flex;
+  align-items: flex-start;
+
+  transition: all 2s ease-in-out;
+  /* justify-content: baseline; */
+  -webkit-text-stroke: 1px black;
+}
+.game_button {
+  position: absolute;
+  bottom: 1rem;
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 100;
+  width: 90%;
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  color: #a1662f;
+  -webkit-text-stroke: 1px white;
+  cursor: pointer;
+  transition: all 2s ease-in-out;
+}
+
+#distinction {
+  font-family: "Press Start 2P", system-ui;
+  font-size: 1.5rem;
+  text-align: center;
+  color: white;
+}
+.image_effect2_content .content1 p,
+.game_button {
+  opacity: 0;
+}
+.image_effect2_content:hover div {
+  width: 100%;
+  bottom: 0;
+}
+
+.image_effect2_content:hover div button {
+  animation: glowingtext 1s ease-in-out infinite;
+  opacity: 1;
+}
+.image_effect2_content:hover .content1 p {
+  opacity: 1;
+}
+@keyframes glowingtext {
+  0% {
+    color: #a1662f;
+  }
+  50% {
+    color: #fff3e8;
+  }
+  100% {
+    color: #a1662f;
+  }
+}
+
+.effect3 {
+  height: 100vh;
+  width: 100%;
+}
+.image_effect3_content {
+  position: relative;
+  width: 28%;
+  border-radius: 1rem;
+  overflow: hidden;
+  margin: auto;
+  height: 60%;
+  border: 1px solid black;
+}
+
+.image_effect3_content .content1 {
+  position: absolute;
+  height: 15%;
+  width: 100%;
+  bottom: -15%;
+
+  /* background-color: red; */
+  transition: all 0.7s ease-in-out;
+  /* font-size: 1.5rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.price {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.motivator {
+  color: #a1662f;
+}
+.image_effect3_content picture {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.7s ease-in-out;
+}
+
+.image_effect3_content picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image_effect3_content:hover picture {
+  top: -15%;
+}
+.image_effect3_content:hover div {
+  bottom: 0;
+}
+
+/* CSS creative buttons */
+
+#buttons {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn_container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  border: 1px solid black;
+  padding: 1rem;
+}
+
+.container_1 {
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.container_2 {
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+.btnOne {
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: black;
+}
+.btnTwo {
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btnThree {
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btnFour {
+  border: 1px solid black;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.btnOne button {
+  padding: 1.5rem 3rem;
+  font-size: 1rem;
+  position: relative;
+  background-color: black;
+  border: 1px solid white;
+  color: white;
+  overflow: hidden;
+}
+
+.btnOne button::after {
+  position: absolute;
+  content: "Done";
+  color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  top: -100%;
+  left: 0;
+  transition: top 0.5s ease-in-out;
+}
+
+.btnOne button:hover::after {
+  top: 0;
+}
+
+.btnTwo button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 1.3rem 3rem;
+  font-size: 1.5rem;
+  position: relative;
+  z-index: 5;
+}
+
+.btnTwo button::after {
+  content: "Set";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(240, 240, 8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateX(270deg);
+  transform-origin: top;
+  transition: all 0.5s ease-in-out;
+  z-index: 1;
+}
+.btnTwo button::before {
+  content: "Go";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: green;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotateX(270deg);
+  transform-origin: top;
+  z-index: 3;
+  transition: all 0.5s ease-in-out 0.3s;
+}
+
+.btnTwo button:hover::after {
+  transform: rotateX(0deg);
+}
+.btnTwo button:hover::before {
+  transform: rotateX(0deg);
+}
+
+.btnThree button {
+  /* border: none; */
+  background-color: transparent;
+  font-weight: bolder;
+  border: none;
+  font-size: 2rem;
+  padding: 0.5rem 3rem;
+  position: relative;
+  mix-blend-mode: multiply;
+  color: rgb(136, 135, 135);
+  transition: all 0.5s ease-in-out;
+}
+.btnThree button::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: -30%;
+  left: -5%;
+  left: 0;
+  z-index: 3;
+  background-color: rgb(0, 128, 0, 0.7);
+  transform: rotateX(10deg);
+  transform-origin: top;
+  transition: all 0.5s ease-in-out;
+}
+.btnThree button::before {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 100%;
+  top: 30%;
+
+  left: 5%;
+  z-index: 3;
+  background-color: rgba(255, 251, 27, 0.7);
+  transform: rotateX(-10deg);
+  transform-origin: bottom;
+  transition: all 0.5s ease-in-out;
+}
+
+.btnThree button:hover::after {
+  transform: perspective(1000px) rotateX(100deg);
+}
+.btnThree button:hover::before {
+  transform: perspective(1000px) rotateX(100deg);
+}
+
+.btnThree button:hover {
+  color: black;
+}
+
+/* CSS for menus section */
+
+.btnFour button {
+  background-color: black;
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  background-color: black;
+  color: white;
+  position: relative;
+}
+
+.btnFour button::after {
+  content: "";
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  top: -0.7rem;
+  left: -0.7rem;
+  border-top: 6px solid black;
+  border-left: 6px solid black;
+  transition: all 0.7s ease-in-out;
+}
+.btnFour button::before {
+  content: "";
+  position: absolute;
+  width: 10%;
+  height: 10%;
+  right: -0.7rem;
+  bottom: -0.7rem;
+  border-right: 6px solid black;
+  border-bottom: 6px solid black;
+  transition: all 0.7s ease-in-out;
+}
+
+.btnFour button:hover::after {
+  width: 100%;
+  height: 100%;
+}
+.btnFour button:hover::before {
+  width: 100%;
+  height: 100%;
+}
+
+/* CSS for menus */
+
+/* #menus {
+
+} */
+
+    </style>
+</head>
+
+<body>
+    <section id="image_hover">
+        <h2>Image hover effect</h2>
+        <div class="container">
+            <div class="clip clip1"></div>
+            <div class=" clip clip2"></div>
+            <div class=" clip clip3"></div>
+        </div>
+    </section>
+    <section id="cards">;
+        <h2>Cards</h2>
+        <article class="first_card">
+            <div class="first_card_insider">
+                <div class="first_card_insider_lvl2">
+                    <img src="https://images.pexels.com/photos/4584652/pexels-photo-4584652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                        alt="">
+                </div>
+                <h3>Olivia</h3>
+            </div>
+            <div class="empty1"></div>
+            <div class="empty2"></div>
+        </article>
+        <article></article>
+    </section>
+    <section id="loader">
+        <h2>Loading animation</h2>
+        <div class="loader_elements">
+            <div class=" sphere sphere1"></div>
+            <div class=" sphere sphere2"></div>
+            <div class=" sphere sphere3"></div>
+            <div class=" sphere sphere4"></div>
+            <div class=" sphere sphere5"></div>
+        </div>
+    </section>
+    <section id="image_effect">
+        <h2>Image Effect</h2>
+        <article class="effect1">
+            <div class="image_effect1_content">
+                <p class="content1"> "To be your best every day, you need to wear the best every day."</p>
+                <picture class="content2">
+                    <source>
+                    <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c25lYWtlcnxlbnwwfHwwfHx8MA%3D%3D"
+                        alt="">
+                </picture>
+            </div>
+        </article>
+        <article class="effect2">
+            <div class="image_effect2_content">
+                <div class="content1">
+                    <p id="distinction">Customizable AI hologram model JOI</p>
+                    <p>
+                        <span>
+
+                            JOI:
+                        </span>
+                        <span class="nowrap">
+
+                            I can act as cook,wife and being real for you
+                    </p>
+                    </span>
+                    <p>
+                        <span>
+
+                            JOI:
+                        </span>
+                        <span class="nowrap">
+
+                            You look lonely i can fix that
+                        </span>
+                    </p>
+                    <button class="game_button">Accept</button>
+                </div>
+                <picture class="content2">
+                    <!-- <source
+                        src="https://static.independent.co.uk/s3fs-public/thumbnails/image/2017/10/04/16/ana-de-armas-blade-runner-2.jpg?width=1200"> -->
+                    <img src="https://wallpapercave.com/wp/wp4817395.jpg" alt="">
+                </picture>
+            </div>
+        </article>
+        <article class="effect3">
+            <div class="image_effect3_content">
+                <div class="content1">
+                    <p>
+                        <span class="price">Price:$13.44</span>
+                        <span class="motivator">20% off just for you🧡</span>
+                    </p>
+                </div>
+                <picture class="content2">
+                    <source>
+                    <img src="https://media.istockphoto.com/id/1349128674/photo/young-man-in-black-sweatshirt-putting-his-hood-up-on-the-outside.jpg?s=612x612&w=0&k=20&c=l2Ji7moxBBRQrLufJ8Ee-FBzNzE_nhupEedjcrhnUvI="
+                        alt="">
+                </picture>
+            </div>
+        </article>
+    </section>
+
+    <section id="buttons">
+        <h2>Buttons</h2>
+        <div class="btn_container">
+
+            <div class="container_1">
+                <div class="btnOne">
+                    <button>Hover me</button>
+                </div>
+                <div class="btnTwo">
+                    <button>Ready</button>
+
+                </div>
+            </div>
+            <div class="container_2">
+
+                <div class="btnThree">
+                    <button>Hover me</button>
+                </div>
+                <div class="btnFour">
+
+                    <button>Hover me</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- <section id="menus">
+        <h2>Creative menus</h2>
+        <div class="+">
+
+            <div class="container_1">
+                <div class="btnOne">
+                    <button>Hover me</button>
+                </div>
+                <div class="btnTwo">
+                    <button>Ready</button>
+
+                </div>
+            </div>
+            <div class="container_2">
+
+                <div class="btnThree">
+                    <button>Hover me</button>
+                </div>
+                <div class="btnFour">
+
+                    <button>Hover me</button>
+                </div>
+            </div>
+        </div> -->
+    </section>
+
+
+</body>
+
+</html>
